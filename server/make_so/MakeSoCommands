@@ -1,0 +1,12 @@
+
+第一步：执行下面的命令，生成libseg.so，并复制到/usr/lib/
+g++ -fPIC -shared -o libseg.so seg.cpp 
+sudo cp ./libseg.so  /usr/lib/
+
+第二步：执行下面的命令，生成libsegment.so，并复制到/usr/lib/
+g++ -fPIC -shared -o libsegment.so segment.cpp -lseg
+sudo cp ./libsegment.so  /usr/lib/
+
+-----------
+下面的命令是编译服务器端程序，生成server
+gcc -rdynamic -s -o server server.c -g -ldl
